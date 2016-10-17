@@ -33,12 +33,11 @@ public:
 	Graph();
 	std::vector<Node*> graph_vector;
 	int array_counter;
-	void AddToGraph(std::string data_);
+	void AddToGraph(string vector_data, string edge_data);
 	void LinkNodes(string target_node_a, string target_node_b);
 	bool BipartiteCheck();
+	bool BFS(string data);
 	
 };
-
-
 
 #endif /* graph_hpp */

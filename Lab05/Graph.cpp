@@ -17,139 +17,79 @@ Node::Node()
 Graph::Graph()
 {
 	array_counter = 0;
-
 }
 
-void Graph::AddToGraph(std:: string data_)
+void Graph::AddToGraph(std::string vector_data, std::string edge_data)
 {
-	Node* new_node = new Node();
 
-	new_node->data_ = data_;
+	Node* new_vector = new Node();
+	Node* new_edge = new Node();
 
-	new_node->vect_num = array_counter;
+	new_vector->data_ = vector_data;
+	new_edge->data_ = edge_data;
 
-	graph_vector.push_back(new_node);
+	cout << "added new edge: " << new_edge->data_ << endl;
+	new_vector->node_vector.push_back(new_edge);
+
+	new_vector->vect_num++;
+
+	cout << "added new vector: " << new_vector->data_ << endl;
+	graph_vector.push_back(new_vector);
 
 	array_counter++;
 
-	//cout << "Node: " << data_ << " added." << endl;
-
-}
-
-void Graph::LinkNodes(string target_node_a, string target_node_b)
-{
-	Node* loc_a = new Node();
-	Node* loc_b = new Node();
-	for (vector<Node*>::iterator i = graph_vector.begin(); i != graph_vector.end(); ++i)
-	{
-		Node* temp_node = new Node();
-
-		
-
-		if (temp_node->data_ == target_node_a){
-			loc_a = temp_node;
-		}
-	}
-	
-	for (vector<Node*>::iterator i = graph_vector.begin(); i != graph_vector.end(); ++i)
-	{
-		Node* temp_node2 = new Node();
-
-		temp_node2 = *i;
-
-		if (temp_node2->data_ == target_node_b){
-			loc_b = temp_node2;
-
-		}
-	}
-	
-	loc_a->node_vector.push_back(loc_b);	//adds location of b to a's node_vector
-	loc_b->node_vector.push_back(loc_a);	//adds location of a to b's node_vector
-
 }
 
 bool Graph::BipartiteCheck()
 {
-
-	int counter = 0;
-	vector<Node*> temp_vector;
-
-	// Iterating through all nodes in graph
-	for (vector<Node*>::iterator i = graph_vector.begin(); i != graph_vector.end(); ++i)
+	Node *vec_beg;
+	vec_beg = graph_vector.begin();
+	while(vec_beg != graph_vector.end())
 	{
-
-		// Assigning first node in vector to run tests on it
-		if (counter <= 0)
-		{
-			Node* temp_node0 = new Node();
-			temp_node0 = *i;
-			temp_vector.push_back(temp_node0);
-		}
-		else
-		{	
+		cout << "here" << endl;
+	}
 
 
-
-			return false
-		}
-
-
-	return true;
-}
-
-/*  OLD ONE
-bool Graph::BipartiteCheck()
-{
-	int counter = 0;
-	vector<Node*> temp_vector;
-
-	// Iterating through all nodes in graph
-	for (vector<Node*>::iterator i = graph_vector.begin(); i != graph_vector.end(); ++i)
+	/*
+	for (int i = 0; i < graph_vector.size(); ++i)
 	{
-		cout << "Here 0" << endl;
-		// Assigning first node in vector
-		if (counter <= 0)
+		Node* temp_node1 = new Node();
+		temp_node1 = graph_vector[i];
+
+		cout << "temp_node1 = " << temp_node1->data_ << endl;		
+
+		for (int j = 0; j < temp_node1->node_vector.size(); ++j)
 		{
-			Node* temp_node0 = new Node();
-			temp_node0 = *i;
-			temp_vector.push_back(temp_node0);
-			//cout << "Here 1" << endl;
-		}
-		else
-		{
-			Node* temp_node1 = new Node();
-			temp_node1 = *i;
-			//cout << "Here 2" << endl;
+			Node* temp_node2 = new Node();
+			temp_node2 = temp_node1->node_vector[j];
+
+			cout << "temp_node2 = " << temp_node2->data_ << endl;
 			
-			// Iterating through all nodes that 'i' points to
-			for (vector<Node*>::iterator i = temp_node1->node_vector.begin(); i != temp_node1->node_vector.end(); ++i)
-			{
-				Node* temp_node2 = new Node();
-				temp_node2 = *i;
-
-				// Iterate through all nodes in temp vect to compare
-				for (vector<Node*>::iterator i = temp_vector.begin(); i != temp_vector.end(); ++i)
-				{
-					Node* temp_vect_node = new Node();
-					temp_vect_node = *i;
-
-					if (temp_node2 != temp_vect_node)
-					{
-						temp_vector.push_back(temp_node2);
-					}
-					else
-					{
-						return false;
-					}
-				}
-			}
+			if (BFS(temp_node2->data_))
+				return true;
 		}
-		
-		counter++;
 	}
 
+	return false;
+	*/
+}
+
+bool Graph::BFS(string x)
+{
+	for (int i = 0; i < graph_vector.size(); ++i)
+	{ 
+		Node* temp_node1 = new Node();
+		temp_node1 = graph_vector[i];
+
+		cout << temp_node1->data_ << " comparing " << x << endl;
+		if (temp_node1->data_ == x)
+		{
+			cout << "Returning false in BFS" << endl;
+			return false;
+		}
+	}
+
+	cout << "Returning true from BFS" << endl;
 	return true;
 
 }
-*/
-

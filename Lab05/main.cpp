@@ -9,28 +9,13 @@ int main()
 
 	Graph g;
 	
-	g.AddToGraph("Node1");
-	g.AddToGraph("Node2");
-	g.AddToGraph("Node3");
-	g.AddToGraph("Node4");
-	g.AddToGraph("Node5");
-	g.AddToGraph("Node6");
-	g.AddToGraph("Node7");
-	g.AddToGraph("Node8");
-
-	// Bipartite graph
-	g.LinkNodes("Node1", "Node6");
-	g.LinkNodes("Node1", "Node7");
-	g.LinkNodes("Node1", "Node8");
-	g.LinkNodes("Node2", "Node6");
-	g.LinkNodes("Node2", "Node7");
-	g.LinkNodes("Node2", "Node8");
-	g.LinkNodes("Node3", "Node6");
-	g.LinkNodes("Node3", "Node7");
-	g.LinkNodes("Node3", "Node8");
+	g.AddToGraph("1", "7");
+	g.AddToGraph("2", "1");
+	g.AddToGraph("3", "9");
 
 	if (g.BipartiteCheck())
-		cout << "Yes here" << endl;
-
+		cout << "The graph is bipartite" << endl;
+	else
+		cout << "The graph is not bipartite" << endl;
 	return 0;
 }
