@@ -33,17 +33,19 @@ int main()
 	N.AddEdge('E', 'F', 8);
 	N.AddEdge('F', 'G', 9);
 
-	cout << "Displaying Graph N's Edges " << endl;
-	N.DisplayEdges();
+	//cout << "Displaying Graph N's Edges " << endl;
+	//N.DisplayEdges();
 
-	cout << " -------- - --------- " << endl;
+	//cout << " -------- - --------- " << endl;
 
-	newN = N.PrimMST();
+	//newN = N.PrimMST();
 
-	cout << "Displaying Graph newN's Edges " << endl;
-	newN->DisplayEdges();
+	newN = N.KruskalMST();
+
+	//cout << "Displaying Graph newN's Edges " << endl;
+	//newN->DisplayEdges();
 	
-	newN->ToGraphviz();
+	//newN->ToGraphviz();
 	
 
 	return 0;

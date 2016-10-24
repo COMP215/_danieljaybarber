@@ -334,15 +334,46 @@ Graph* Graph::KruskalMST(void)
 	vector<Edge*> official_moves;			// A new vector of type Edge pointers used to store offical moves availible
 	vector<Edge*> sorted_edges;				// A new vector of type Edge pointers used to store the sorted edges
 	Edge* temp_edge;						// An Edge pointer used in the for loop to iterate through a vector of edges
+	Edge* temp_edge2;
 	Edge* smallest_edge;					// An Edge pointer used for comparing edges to find the smallest, for sorting
-	int counter=1;							// A counter used while comparing edges
+	int counter = 0;
+
+	// Sorting the vector by weight size and storing into a new vector
+	for (vector<Edge*>::iterator i = master_edge_list.begin(); i != master_edge_list.end(); ++i)
+	{
+		temp_edge = *i;
+		official_moves.push_back(temp_edge);
+	}
+	if (!official_moves.empty()){
+		while (!official_moves.empty())
+		{
+			smallest_edge = official_moves.at(0);
+			for (vector<Edge*>::iterator i = official_moves.begin(); i != official_moves.end(); ++i)
+			{
+				temp_edge = *i;
+				if (temp_edge->weight < smallest_edge->weight) { 
+					smallest_edge = temp_edge; 
+				}
+			}
+			//cout << "OM Size: " << official_moves.size() << endl;
+			sorted_edges.push_back(smallest_edge);
+			official_moves.erase(find(official_moves.begin(),official_moves.end(),smallest_edge));
+			//cout << "PuSHED: " << smallest_edge->vertA << " - " << smallest_edge->vertB << " - " << smallest_edge->weight << endl;	
+		} 
+	}
+	// End of sorting the vector by weight size and pushing to a new vector
+
 	
-	smallest_edge = master_edge_list.at(0);
+	while (sorted_edges.size() != 0)
+	{
+		smallest_edge = sorted_edges.at(0);
+		cout << smallest_edge->weight << endl;
+		sorted_edges.erase(find(sorted_edges.begin(), sorted_edges.end(), smallest_edge));
 
-
+	}
 	newGraph = new Graph();
 	return newGraph;
-
+	
 
 }
 
