@@ -18,12 +18,12 @@ int main()
 		//array_one[i] = 0;
 
 	//selectionSort(array_one, counter);
-	//bubbleSort(array_one, counter);
-	mergeSort(array_one, 0, counter);
-	/*
+	bubbleSort(array_one, counter);
+	//mergeSort(array_one, 0, counter);
+	
 	for (int i = 0; i < counter; ++i)
 		cout << array_one[i] << endl;
-*/
+
 	return 0;
 }
 
