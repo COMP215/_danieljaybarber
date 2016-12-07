@@ -10,14 +10,14 @@ int main()
 {
   int num_one, num_two;
 
-  cout << "Enter the first number: ";
-  cin >> num_one;
+  //cout << "Enter the first number: ";
+  //cin >> num_one;
 
-  cout << "Enter the second number: ";
-  cin >> num_two;
+  //cout << "Enter the second number: ";
+  //cin >> num_two;
 
-  Euclidean_GCD(num_one, num_two);
-  NoName_GCD(num_one, num_two);
+  Euclidean_GCD(45, 15);
+  NoName_GCD(45, 15);
   return 0;
 }
 
